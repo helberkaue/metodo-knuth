@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodo Knuth</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: darkblue;
+        }
+        .cartao {
+            display: block;
+            width: 80px;
+            height: 100px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #e0e0e0;
+            font-size: 20px;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .cartao::before {
+            content: attr(data-index);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            color: #fff;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        #botao-embaralhar {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #botao-embaralhar:hover {
+            background-color: #282a2c;
+        }
+        #embaralhar-lista {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ordem de Apresentação</h1>
+    <p></p>
+    <div id="embaralhar-lista"></div>
+    <button id="botao-embaralhar">Embaralhar</button>
+    <script>
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const num = ['Lucas','Ana','Mateus', 'Kauê', 'Nicolas', 'Diego', 'Beatriz', 'Marcela', 'Marcos', 'Luisa'];
+
+        function displayShuffledList() {
+            const shufflednum = shuffle([...num]);
+            const shuffledListElement = document.getElementById('embaralhar-lista');
+            shuffledListElement.innerHTML = '';
+            shufflednum.forEach((number, index) => {
+                const cartao = document.createElement('div');
+                cartao.className = 'cartao';
+                cartao.textContent = number;
+                cartao.setAttribute('data-index', index + 1);
+                shuffledListElement.appendChild(cartao);
+            });
+        }
+
+        document.getElementById('botao-embaralhar').addEventListener('click', displayShuffledList);
+    </script>
+</body>
+</html>
