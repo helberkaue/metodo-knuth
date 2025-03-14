@@ -11,7 +11,11 @@
             flex-direction: column;
             align-items: center;
             font-family: Arial, sans-serif;
-            background-color: darkblue;
+            background-color: rgb(0, 0, 0);
+        }
+        #ordem-aprese {
+            color: #ffffff;
+            margin-top: 20px;
         }
         .cartao {
             display: block;
@@ -19,7 +23,7 @@
             height: 100px;
             margin: 5px;
             padding: 10px;
-            border: 1px solid #000;
+            border: 1px solid #ffffff;
             border-radius: 5px;
             text-align: center;
             display: flex;
@@ -36,7 +40,7 @@
             top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #000;
+            background-color: #ff9a9a;
             color: #fff;
             padding: 2px 5px;
             border-radius: 3px;
@@ -47,13 +51,13 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #000000;
-            color: white;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
             border: none;
             border-radius: 5px;
         }
         #botao-embaralhar:hover {
-            background-color: #282a2c;
+            background-color: #c2c2c2;
         }
         #embaralhar-lista {
             display: flex;
@@ -64,9 +68,8 @@
     </style>
 </head>
 <body>
-    <h1>Ordem de Apresentação</h1>
-    <p></p>
-    <div id="embaralhar-lista"></div>
+    <h1 id="ordem-aprese">Ordem de Apresentação</h1>
+=    <div id="embaralhar-lista"></div>
     <button id="botao-embaralhar">Embaralhar</button>
     <script>
         function shuffle(array) {
@@ -77,7 +80,7 @@
             return array;
         }
 
-        const num = ['Lucas','Ana','Mateus', 'Kauê', 'Nicolas', 'Diego', 'Beatriz', 'Marcela', 'Marcos', 'Luisa'];
+        const num = ['Lucas','Ana','Mateus', 'Kauê', 'Nicolas', 'Diego', 'Bianca', 'Marcela', 'Marcos', 'Luisa'];
 
         function displayShuffledList() {
             const shufflednum = shuffle([...num]);
